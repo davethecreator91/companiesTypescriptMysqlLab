@@ -14,7 +14,10 @@ async function connectToDatabase() {
     console.log('Connected to the Database!');
     const [companies] = await connection.execute('SELECT * FROM companies');
     const [employees] = await connection.execute('SELECT * FROM employees');
-    console.log(companies, employees );
+    const [employeesCount] = await connection.execute('SELECT COUNT(*) FROM employees');
+
+    // console.log(companies, employees );
+    console.log(employeesCount)
     await connection.end();
 };
 connectToDatabase().catch((err) => {
